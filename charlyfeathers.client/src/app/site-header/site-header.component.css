@@ -1,0 +1,16 @@
+.ticker {
+    font-family: 'Lora';
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    align-content: center;
+    background-color: var(--eggplant-colour);
+    height: 39px;
+}
+
+@media only screen and (max-width: 600px) {
+    .ticker{
+        font-size: 11px;
+    }
+} 
+
