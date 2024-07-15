@@ -1,12 +1,12 @@
+<div class="ticker">
+    <p>Open for collaborations and commissions</p>
+</div>
 <div class="wrapper">
-    <div class="ticker">
-        <p>Open for collaborations and commissions</p>
-    </div>
-    <nav>
-        <div class="logo">
-            <img src="/assets/images/charly-feathers-logo-small.png" alt="charly-feathers-logo-small"/>
-        </div>
-        <ul>
+    <a href="#">
+        <img src="/assets/images/charly-feathers-logo-small.png" alt="charly-feathers-logo-small"/>
+    </a>
+        <nav>
+        <ul role="list" class="nav-list">
             <li>
                 <a href="#">Home</a>
             </li>
@@ -23,11 +23,20 @@
                 <a href="#">Contact</a>
             </li>
         </ul>
-        <div class="user-buttons">
-            <fa-icon [icon]="faUser"></fa-icon> 
-            <fa-icon [icon]="faMagnifyingGlass"></fa-icon> 
-            <fa-icon [icon]="faHeart"></fa-icon> 
-            <fa-icon [icon]="faShoppingCart"></fa-icon> 
-        </div>
     </nav>
+
+        <ul role="list" class="icon-list">
+            <li>
+                <a href=""><fa-icon [icon]="faUser" ></fa-icon></a>
+            </li>
+            <li>
+                <a href=""><fa-icon [icon]="faMagnifyingGlass"></fa-icon></a>
+            </li>
+            <li>
+                <a href=""><fa-icon [icon]="faHeart"></fa-icon></a>
+            </li>
+            <li>
+                <a href=""><fa-icon [icon]="faShoppingCart"></fa-icon> </a>
+            </li>
+        </ul>
 </div>

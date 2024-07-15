@@ -1,8 +1,24 @@
 :root{
-    --eggplant-colour: #402D70;
-    --mint-green-colour: #C9D7A9;
-    --dark-text-colour: #04080F;
-    --light-grey-colour: #D3D3D3;
+    --clr-neutral-300: #D3D3D3;
+    --clr-neutral-100: #fff;
+    --clr-primary-800: #04080F;
+    --clr-primary-200: #C9D7A9;
+    --clr-accent-400: #402D70;
+
+    --ff-alt: "Lora", serif;
+    --ff-light: "Poppins Light", sans-serif;
+    --ff-base: "Poppins Regular", sans-serif;
+    --ff-medium: "Poppins Medium", sans-serif;
+    --ff-semi-bold: "Poppins Semi-Bold", sans-serif;
+    --ff-bold: "Poppins Bold", sans-serif;
+
+    --fs-100: 0.785rem;
+    --fs-200: 1rem;
+    --fs-300: 1.071rem;
+    --fs-500: 1.428rem;
+    --fs-600: 1.714rem;
+    --fs-700: 2.285rem;
+    --fs-800: 2.571rem;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
@@ -13,9 +29,26 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
+    color-scheme: light;
 }
 
-body{
-    background-color: white;
-    font-family: Poppins, Arial, Helvetica, sans-serif;
+img, svg, picture {
+    max-width: 100%;
+    display: block;
+}
+
+body {
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-primary-800);
+    font-family: var(--ff-base);
+    font-size: var(--fs-300);
+    line-height: 1.5;    
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1120px;
+    margin: auto;
 }
