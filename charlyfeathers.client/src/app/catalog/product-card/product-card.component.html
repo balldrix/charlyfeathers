@@ -1,0 +1,6 @@
+<div class="product-card">
+	<img [src]="getImageUrl(product)" alt="photo of {{ product.name }}">
+	<div class="name">{{ product.name }}</div>
+	<div class="description">{{ product.description }}</div>
+	<div class="cost">{{ product.price | currency : "GBP" }}</div>
+</div>

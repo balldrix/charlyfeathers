@@ -26,6 +26,7 @@ nav
 .nav-list li {
     list-style-type: none;
     padding: 14px;
+    cursor: pointer;
 }
 
 .icon-list {   
@@ -62,6 +63,10 @@ ul li a {
 
 ul li a:hover {
     font-family: var(--ff-medium);
+    text-decoration: underline;
+}
+
+ul li a.active {
     text-decoration: underline;
 }
 

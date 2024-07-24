@@ -1,0 +1,58 @@
+<div class="wrapper">
+	<h3>Catalog / {{ filter }}</h3>	
+	
+	<div class="filter-ribbon">
+		
+		<h2>{{ filter }}</h2> 
+			@if(filter == "All") {
+				<h2>&ensp;Products</h2>
+			}
+
+		<div class="filters">
+			<div class="filters-popularity">
+
+				<select>
+					<option>Popularity</option>
+					<option>Highest Price First</option>
+					<option>Lowest Price First</option>
+				</select>
+
+			</div>
+
+			<div class="filters-category">
+				
+				<select>
+					<option value="" disabled selected>Category</option>
+					<option>All</option>
+					<option>Floss Drops</option>
+					<option>Needle Minders</option>
+					<option>Ring Bling</option>
+				</select>
+
+			</div>
+
+			<div class="filters-showNumProducts">
+
+				<select>
+					<option>Show 20 Products</option>
+					<option>Show 40 Products</option>
+					<option>Show All Products</option>
+				</select>
+				
+			</div>
+		</div>
+
+		<div class="products">
+
+			@for(product of products; track product.id) {
+				<cfs-product-card [product]="product"></cfs-product-card>
+			}
+
+		</div>
+
+		<div class="pagination">
+
+		</div>
+
+	</div>
+</div>
