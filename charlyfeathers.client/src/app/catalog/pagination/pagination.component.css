@@ -15,7 +15,6 @@ ul li {
 
 .btn {
 	background-color: var(--clr-neutral-300);
-	border: none; 
 	color: var(--clr-primary-800);
 	padding: 8px 16px;
 	text-align: center;
@@ -26,7 +25,7 @@ ul li {
 	border: 2px solid transparent;
   }
   
-  	.btn:hover {
+  	.btn:hover:not(.disabled) {
 		border: 2px solid;
 		border-color: var(--clr-accent-400);
 	}
@@ -36,6 +35,12 @@ ul li {
 		color: var(--clr-neutral-300);
 	}
 
+	.btn.active:hover {
+		background-color: var(--clr-neutral-300);
+		color: var(--clr-primary-800);
+	}
+
 	.btn.disabled {
 		color: var(--clr-neutral-400);
+		cursor: default;
 	}

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowLeftLong, faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
+import { max } from 'rxjs';
 
 @Component({
   selector: 'cfs-pagination',
@@ -14,10 +15,12 @@ import { faArrowLeftLong, faArrowRightLong } from '@fortawesome/free-solid-svg-i
 export class PaginationComponent {
   @Input() currentPage: number = 1;
   @Input() totalItems: number = 0;
-  @Input() itemsPerPage: number = 20;
+  @Input() itemsPerPage: number = 12;
   @Output() clickPage = new EventEmitter<number>();
 
+  readonly maxPages: number = 6;
   pages: number[] = [];
+  pageCount: number = 1;
 
   faArrowLeft = faArrowLeftLong;
   faArrowRight = faArrowRightLong;
@@ -26,31 +29,56 @@ export class PaginationComponent {
   }
 
   ngOnInit() {
-    this.paginate();
+    this.paginate(this.currentPage);
   }
 
-  private paginate() {
-    const maxPages: number = 5;
-    const pageCount = Math.ceil(this.totalItems / this.itemsPerPage);
+  private paginate(currentPage: number) {
+    this.pageCount = Math.ceil(this.totalItems / this.itemsPerPage);
+    
+    let start: number = 2;
+    let end: number = this.pageCount - 1;
 
-    if(this.currentPage < 1) {
-      this.currentPage = 1;
-    } else if (this.currentPage > pageCount) {
-      this.currentPage = pageCount;
+    if(currentPage < 1) {
+      currentPage = 1;
+    } else if (currentPage > this.pageCount) {
+      currentPage = this.pageCount;
     }
+    
+    let maxPagesBeforeCurrentPage = Math.floor(this.maxPages / 2);
+    let maxPagesAfterCurrentPage = Math.ceil(this.maxPages / 2);
 
-    this.pages = this.range(1, pageCount);
+    if (this.pageCount <= this.maxPages) {
+      start = 2;
+      end = this.pageCount - 1;
+    } else {
+      if (currentPage <= maxPagesBeforeCurrentPage) {
+        start = 2;
+        end = this.maxPages - 1;
+      } else if (currentPage + maxPagesAfterCurrentPage >= this.pageCount) {
+        start = this.pageCount - this.maxPages + 1;
+        end = this.pageCount - 1;
+      } else {
+        start = currentPage - maxPagesBeforeCurrentPage + 1;
+        end = currentPage + maxPagesAfterCurrentPage - 1;
+      }
+    }
+    
+    console.log("start:" + start);
+    console.log("end:" + end);
+    this.pages = this.range(start, end);
+    console.log(this.pages);
   }
 
   range(start: number, end: number) : number[] { 
-    return Array.from(Array(end).keys()).map(x => x + start);
+    return Array.from(Array((end + 1) - start).keys()).map(x => x + start);
   }
 
   onClick(page: number)
   {
-    if(page < 1 || page > this.pages.length)
+    if(page < 1 || page > this.pageCount)
       return;
 
     this.clickPage.emit(page);
+    this.paginate(page);
   }
 }

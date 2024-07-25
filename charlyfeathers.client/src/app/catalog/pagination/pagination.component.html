@@ -1,15 +1,28 @@
 <div class="wrapper">
 	<div class="pagination">
 		<ul>			
-			@if (currentPage > 1) {
-				<li class="pagination-item" (click)="onClick(currentPage - 1)">
+			<li class="pagination-item" (click)="onClick(currentPage - 1)">
+				<a class="btn" [ngClass]="{ disabled: currentPage == 1 }">
+					<fa-icon [icon]="faArrowLeft">
+					</fa-icon>
+					Previous
+				</a>
+			</li>
+
+			<li class="pagination-item" 
+				(click)="onClick(1)">
+				<a class="btn" [ngClass]="{ active: currentPage == 1 }">
+					1
+				</a>
+			</li>
+
+			@if (currentPage >  maxPages / 2) {
+				<li class="pagination-item">
 					<a class="btn">
-						<fa-icon [icon]="faArrowLeft">
-						</fa-icon>
-						Previous
+						...
 					</a>
 				</li>
-			}
+			}	
 
 			<li 
 				*ngFor="let page of pages"
@@ -20,15 +33,28 @@
 				</a>
 			</li>
 
-			@if (currentPage < pages.length) {
-				<li class="pagination-item" (click)="onClick(currentPage + 1)">
+			@if (currentPage < (pageCount - maxPages / 2) + 1) {
+				<li class="pagination-item">
 					<a class="btn">
-						Next
-						<fa-icon [icon]="faArrowRight">
-						</fa-icon>
+						...
 					</a>
 				</li>
-			}
+			}	
+
+			<li class="pagination-item" 
+			(click)="onClick(pageCount)">
+			<a class="btn" [ngClass]="{ active: currentPage == pageCount }">
+				{{ pageCount }}
+			</a>
+		</li>
+
+			<li class="pagination-item" (click)="onClick(currentPage + 1)">
+				<a class="btn" [ngClass]="{ disabled: currentPage == pageCount }">
+					Next
+					<fa-icon [icon]="faArrowRight">
+					</fa-icon>
+				</a>
+			</li>
 		</ul>	
 	</div>
 </div>

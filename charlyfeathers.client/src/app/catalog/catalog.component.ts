@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PaginationComponent } from "./pagination/pagination.component";
@@ -15,7 +15,7 @@ export class CatalogComponent {
   products: IProduct[] = [];
   filter: string = "All";
   currentPage: number = 1;
-  itemsPerPage: number = 20;
+  itemsPerPage: number = 12;
 
   ngOnInit() {
     this.products = 
