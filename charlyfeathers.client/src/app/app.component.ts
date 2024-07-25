@@ -3,6 +3,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { SiteHeaderComponent } from "./site-header/site-header.component";
 import { SiteFooterComponent } from "./site-footer/site-footer.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -1,0 +1,41 @@
+.pagination {
+	width: 100%;
+	text-align: right;
+}
+
+ul {
+	margin: 2px auto;
+}
+
+ul li {
+	display: inline-block;
+	text-align: center;
+	padding: 8px;
+}
+
+.btn {
+	background-color: var(--clr-neutral-300);
+	border: none; 
+	color: var(--clr-primary-800);
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 8px;
+	border: 2px solid transparent;
+  }
+  
+  	.btn:hover {
+		border: 2px solid;
+		border-color: var(--clr-accent-400);
+	}
+  
+	.btn.active {
+		background-color: var(--clr-accent-400);
+		color: var(--clr-neutral-300);
+	}
+
+	.btn.disabled {
+		color: var(--clr-neutral-400);
+	}

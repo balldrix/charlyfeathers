@@ -44,15 +44,17 @@
 
 		<div class="products">
 
-			@for(product of products; track product.id) {
+			@for(product of paginatedProducts; track product.id) {
 				<cfs-product-card [product]="product"></cfs-product-card>
 			}
 
 		</div>
 
-		<div class="pagination">
-
-		</div>
-
+		<cfs-pagination 
+			[currentPage]="currentPage" 
+			[itemsPerPage]="itemsPerPage" 
+			[totalItems]="products.length" 
+			(clickPage)="changePage($event)"
+		/>
 	</div>
 </div>

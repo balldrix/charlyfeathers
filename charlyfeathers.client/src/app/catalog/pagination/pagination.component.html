@@ -1,1 +1,34 @@
-<p>pagination works!</p>
+<div class="wrapper">
+	<div class="pagination">
+		<ul>			
+			@if (currentPage > 1) {
+				<li class="pagination-item" (click)="onClick(currentPage - 1)">
+					<a class="btn">
+						<fa-icon [icon]="faArrowLeft">
+						</fa-icon>
+						Previous
+					</a>
+				</li>
+			}
+
+			<li 
+				*ngFor="let page of pages"
+				(click)="onClick(page)"
+			>
+				<a [ngClass]="{'btn': true, active: currentPage === page }">
+					{{ page }}
+				</a>
+			</li>
+
+			@if (currentPage < pages.length) {
+				<li class="pagination-item" (click)="onClick(currentPage + 1)">
+					<a class="btn">
+						Next
+						<fa-icon [icon]="faArrowRight">
+						</fa-icon>
+					</a>
+				</li>
+			}
+		</ul>	
+	</div>
+</div>
