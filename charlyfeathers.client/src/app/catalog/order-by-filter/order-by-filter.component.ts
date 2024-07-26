@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms'
   styleUrl: './order-by-filter.component.css'
 })
 export class OrderByFilterComponent {
-[x: string]: any;
   @Output() selectOrderBy = new EventEmitter<SortOrder>();
   options: SortOrder[] = [SortOrder.popularity, SortOrder.priceAscending, SortOrder.priceDescenting];
   selectedOption: SortOrder = SortOrder.popularity;

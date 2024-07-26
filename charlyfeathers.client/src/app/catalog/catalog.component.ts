@@ -1,20 +1,20 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PaginationComponent } from "./pagination/pagination.component";
 import { OrderByFilterComponent } from "./order-by-filter/order-by-filter.component";
 import { SortOrder } from './order-by-filter/order-by-filter.component';
+import { Category, CategoryFilterComponent } from "./category-filter/category-filter.component";
 
 @Component({
   selector: 'cfs-catalog',
   standalone: true,
-  imports: [ProductCardComponent, PaginationComponent, OrderByFilterComponent],
+  imports: [ProductCardComponent, PaginationComponent, OrderByFilterComponent, CategoryFilterComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
 
 export class CatalogComponent {
-  @ViewChild(PaginationComponent) paginationCmp!: PaginationComponent;
   products: IProduct[] = [];
   filter: string = "All";
   currentPage: number = 1;
@@ -66,22 +66,30 @@ export class CatalogComponent {
     ];
   }
 
-  sortedProducts() : IProduct[] {
+  getFilteredProducts() : IProduct[] {
+    return this.filter == Category.all ? 
+      this.products :
+      this.products.filter((product: IProduct) => product.category.toLowerCase() == this.filter.toLocaleLowerCase());
+  }
+
+  getSortedProducts() : IProduct[] {
+    let results = this.getFilteredProducts();
+    
     if (this.orderBy == SortOrder.popularity) {
-      return this.products.sort((p1, p2) => p1.totalSales - p2.totalSales);
+      results = results.sort((p1, p2) => p1.totalSales - p2.totalSales);
     } else if (this.orderBy == SortOrder.priceAscending) {
-      return this.products.sort((p1, p2) => p1.price - p2.price);
+      results = results.sort((p1, p2) => p1.price - p2.price);
     } else if (this.orderBy == SortOrder.priceDescenting) {
-      return this.products.sort((p1, p2) => p2.price - p1.price);
-    } else {
-      return this.products;
+      results = results.sort((p1, p2) => p2.price - p1.price);
     }
+    
+    return results;
   }
 
   get paginatedProducts() : IProduct[] {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-    return this.sortedProducts().slice(start, end);
+    return this.getSortedProducts().slice(start, end)
   }
     
   changePage(page: number) {
@@ -91,5 +99,10 @@ export class CatalogComponent {
   changeOrder(orderBy: SortOrder) {
     this.orderBy = orderBy;
     console.log("changing order to " + orderBy);
+  }
+
+  filterCategory(filter: Category) {
+    this.filter = filter;
+    console.log("filtering products:" + filter);
   }
 }

@@ -1,6 +1,6 @@
 <div class="dropdown">
 
-	<select [(ngModel)]="selectedOption" (change)="onOrderSelected()">
+	<select [(ngModel)]="selectedOption" (change)="onCategorySelected()">
 		<option *ngFor="let option of this.options" [value]="option">{{ option }}</option>
 	</select>
 

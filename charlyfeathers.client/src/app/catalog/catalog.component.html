@@ -3,29 +3,12 @@
 	
 	<div class="filter-ribbon">
 		
-		<h2>{{ filter }}</h2> 
-			@if(filter == "All") {
-				<h2>&ensp;Products</h2>
-			}
-
+		<h2>{{ filter }} @if(filter == "All") { &ensp;Products}</h2>
 		<div class="filters">
-			<cfs-order-by-filter 
-				(selectOrderBy)="changeOrder($event)"
-			/>
+			<cfs-order-by-filter (selectOrderBy)="changeOrder($event)"/>
+			<cfs-category-filter (selectCategory)="filterCategory($event)"/>
 
-			<div class="filters-category">
-				
-				<select>
-					<option value="" disabled selected>Category</option>
-					<option>All</option>
-					<option>Floss Drops</option>
-					<option>Needle Minders</option>
-					<option>Ring Bling</option>
-				</select>
-
-			</div>
-
-			<div class="filters-showNumProducts">
+			<div class="dropdown">
 
 				<select>
 					<option>Show 20 Products</option>
