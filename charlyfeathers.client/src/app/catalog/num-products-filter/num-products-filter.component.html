@@ -1,0 +1,7 @@
+<div class="dropdown">
+
+	<select [(ngModel)]="maxProducts" (change)="onNumberSelected()">
+		<option *ngFor="let option of this.options" [value]="option.value">{{ option.key }}</option>
+	</select>
+
+</div>

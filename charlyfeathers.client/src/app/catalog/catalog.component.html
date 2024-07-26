@@ -7,16 +7,7 @@
 		<div class="filters">
 			<cfs-order-by-filter (selectOrderBy)="changeOrder($event)"/>
 			<cfs-category-filter (selectCategory)="filterCategory($event)"/>
-
-			<div class="dropdown">
-
-				<select>
-					<option>Show 20 Products</option>
-					<option>Show 40 Products</option>
-					<option>Show All Products</option>
-				</select>
-				
-			</div>
+			<cfs-num-products-filter (selectMaxProducts)="changeMaxProducts($event)"/>
 		</div>
 
 		<div class="products">

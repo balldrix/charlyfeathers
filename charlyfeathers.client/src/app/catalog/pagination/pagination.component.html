@@ -9,15 +9,12 @@
 				</a>
 			</li>
 
-			@if (pages.length > 1)
-			{
-				<li class="pagination-item" 
-				(click)="onClick(1)">
-					<a class="btn" [ngClass]="{ active: currentPage == 1 }">
-						1
-					</a>
-				</li>
-			}
+			<li class="pagination-item" 
+			(click)="onClick(1)">
+				<a class="btn" [ngClass]="{ active: currentPage == 1 }">
+					1
+				</a>
+			</li>
 
 			@if (currentPage >  maxPages / 2) {
 				<li class="pagination-item">
@@ -44,12 +41,14 @@
 				</li>
 			}	
 
-			<li class="pagination-item" 
-			(click)="onClick(pageCount)">
-			<a class="btn" [ngClass]="{ active: currentPage == pageCount }">
-				{{ pageCount }}
-			</a>
-		</li>
+			@if (pageCount > 1) {
+				<li class="pagination-item" 
+					(click)="onClick(pageCount)">
+					<a class="btn" [ngClass]="{ active: currentPage == pageCount }">
+						{{ pageCount }}
+					</a>
+				</li>
+			}
 
 			<li class="pagination-item" (click)="onClick(currentPage + 1)">
 				<a class="btn" [ngClass]="{ disabled: currentPage == pageCount }">
