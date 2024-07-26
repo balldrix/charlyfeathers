@@ -8,4 +8,5 @@ export interface IProduct {
 	weight: number;
 	stockCount: number;
 	isCommision: boolean;
+	totalSales: number;
 }

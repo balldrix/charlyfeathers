@@ -1,278 +1,95 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PaginationComponent } from "./pagination/pagination.component";
+import { OrderByFilterComponent } from "./order-by-filter/order-by-filter.component";
+import { SortOrder } from './order-by-filter/order-by-filter.component';
 
 @Component({
   selector: 'cfs-catalog',
   standalone: true,
-  imports: [ProductCardComponent, PaginationComponent],
+  imports: [ProductCardComponent, PaginationComponent, OrderByFilterComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
 
 export class CatalogComponent {
+  @ViewChild(PaginationComponent) paginationCmp!: PaginationComponent;
   products: IProduct[] = [];
   filter: string = "All";
   currentPage: number = 1;
   itemsPerPage: number = 12;
+  orderBy: SortOrder = SortOrder.popularity;
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.products = 
-    [
-      { 
-        id: 0, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      },
-      { 
-        id: 1, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      },    
-      { 
-        id: 2, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 3, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 4, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 5, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 6, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 7, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 8, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 9, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 10, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 11, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      },
-      { 
-        id: 12, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 13, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 14, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 15, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 16, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 17, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 18, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 19, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 20, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      }, 
-      { 
-        id: 21, 
-        name: "Mr Feathers' Owl",
-        description: "Hand painted needle minder - Owl Created by my husband.",
-        imageName: "needle-minder-owl.jpg",
-        category: "Needle Minder",
-        price: 12.0,
-        weight: 0.2,
-        isCommision: false,
-        stockCount: 1
-      },  
+      [
+        {
+            "id": 1,
+            "name": "Floss Drops Set",
+            "description": "Colorful floss drops for organizing embroidery threads.",
+            "imageName": "floss-drops-gelliPrinted-birbruary 1.png",
+            "category": "floss drops",
+            "price": 2.99,
+            "weight": 0.1,
+            "stockCount": 100,
+            "isCommision": false,
+            "totalSales": 50
+        },
+        {
+            "id": 2,
+            "name": "Needle Minder - Owl",
+            "description": "Beautiful needle minder with owl design.",
+            "imageName": "needle-minder-owl.jpg",
+            "category": "needle minders",
+            "price": 4.49,
+            "weight": 0.05,
+            "stockCount": 75,
+            "isCommision": true,
+            "totalSales": 30
+        },
+        {
+            "id": 3,
+            "name": "Ring Bling Kit",
+            "description": "Assorted ring bling accessories for cross stitch enthusiasts.",
+            "imageName": "flossdrops-decorative-helloAutumn 1.png",
+            "category": "ring bling",
+            "price": 9.99,
+            "weight": 0.2,
+            "stockCount": 50,
+            "isCommision": false,
+            "totalSales": 20
+        }
     ];
   }
 
-  get paginatedProducts() {
+  sortedProducts() : IProduct[] {
+    if (this.orderBy == SortOrder.popularity) {
+      return this.products.sort((p1, p2) => p1.totalSales - p2.totalSales);
+    } else if (this.orderBy == SortOrder.priceAscending) {
+      return this.products.sort((p1, p2) => p1.price - p2.price);
+    } else if (this.orderBy == SortOrder.priceDescenting) {
+      return this.products.sort((p1, p2) => p2.price - p1.price);
+    } else {
+      return this.products;
+    }
+  }
+
+  get paginatedProducts() : IProduct[] {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
-
-    return this.products.slice(start, end);
+    return this.sortedProducts().slice(start, end);
   }
     
   changePage(page: number) {
     this.currentPage = page;
+  }
+
+  changeOrder(orderBy: SortOrder) {
+    this.orderBy = orderBy;
+    console.log("changing order to " + orderBy);
   }
 }

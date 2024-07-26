@@ -1,0 +1,7 @@
+<div class="filters-popularity">
+
+	<select [(ngModel)]="selectedOption" (change)="onOrderSelected()">
+		<option *ngFor="let option of this.options" [value]="option">{{ option }}</option>
+	</select>
+
+</div>

@@ -32,7 +32,7 @@ export class PaginationComponent {
     this.paginate(this.currentPage);
   }
 
-  private paginate(currentPage: number) {
+  public paginate(currentPage: number) {
     this.pageCount = Math.ceil(this.totalItems / this.itemsPerPage);
     
     let start: number = 2;
@@ -48,19 +48,17 @@ export class PaginationComponent {
     let maxPagesAfterCurrentPage = Math.ceil(this.maxPages / 2);
 
     if (this.pageCount <= this.maxPages) {
-      start = 2;
-      end = this.pageCount - 1;
-    } else {
-      if (currentPage <= maxPagesBeforeCurrentPage) {
+        start = 2;
+        end = this.pageCount;
+    } else if (currentPage <= maxPagesBeforeCurrentPage) {
         start = 2;
         end = this.maxPages - 1;
-      } else if (currentPage + maxPagesAfterCurrentPage >= this.pageCount) {
+    } else if (currentPage + maxPagesAfterCurrentPage >= this.pageCount) {
         start = this.pageCount - this.maxPages + 1;
         end = this.pageCount - 1;
-      } else {
+    } else {
         start = currentPage - maxPagesBeforeCurrentPage + 1;
         end = currentPage + maxPagesAfterCurrentPage - 1;
-      }
     }
     
     console.log("start:" + start);

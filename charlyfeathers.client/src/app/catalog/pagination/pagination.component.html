@@ -9,12 +9,15 @@
 				</a>
 			</li>
 
-			<li class="pagination-item" 
+			@if (pages.length > 1)
+			{
+				<li class="pagination-item" 
 				(click)="onClick(1)">
-				<a class="btn" [ngClass]="{ active: currentPage == 1 }">
-					1
-				</a>
-			</li>
+					<a class="btn" [ngClass]="{ active: currentPage == 1 }">
+						1
+					</a>
+				</li>
+			}
 
 			@if (currentPage >  maxPages / 2) {
 				<li class="pagination-item">

@@ -9,15 +9,9 @@
 			}
 
 		<div class="filters">
-			<div class="filters-popularity">
-
-				<select>
-					<option>Popularity</option>
-					<option>Highest Price First</option>
-					<option>Lowest Price First</option>
-				</select>
-
-			</div>
+			<cfs-order-by-filter 
+				(selectOrderBy)="changeOrder($event)"
+			/>
 
 			<div class="filters-category">
 				
