@@ -12,5 +12,4 @@ import { SiteFooterComponent } from "./site-footer/site-footer.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Charly Feathers - Inspired by nature and the simple things in life.';
 }

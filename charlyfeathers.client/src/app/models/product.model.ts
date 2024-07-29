@@ -1,6 +1,7 @@
 export interface IProduct {
 	id: number;
 	name: string;
+	routerName: string;
 	description: string;
 	imageName: string;
 	category: string;
