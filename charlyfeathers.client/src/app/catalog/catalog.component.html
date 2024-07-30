@@ -3,10 +3,13 @@
 	
 	<div class="filter-ribbon">
 		
-		<h2>{{ filter }} @if(filter == "All") { &ensp;Products}</h2>
+		<h2 class="breadcrumbs">{{ filter }} @if(filter == "All") { &ensp;Products}</h2>
 		<div class="filters">
 			<cfs-order-by-filter (selectOrderBy)="changeOrder($event)"/>
-			<cfs-category-filter (selectCategory)="filterCategory($event)"/>
+			<cfs-category-filter 
+				[startingOption]="filter"
+				(selectCategory)="filterCategory($event)"
+			/>
 			<cfs-num-products-filter (selectMaxProducts)="changeMaxProducts($event)"/>
 		</div>
 

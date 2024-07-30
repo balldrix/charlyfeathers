@@ -8,11 +8,14 @@ import { Category, CategoryFilterComponent } from "./category-filter/category-fi
 import { NumProductsFilterComponent } from "./num-products-filter/num-products-filter.component";
 import { BehaviorSubject } from 'rxjs';
 import { ProductService } from '../product.service';
+import { ActivatedRoute } from '@angular/router';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'cfs-catalog',
   standalone: true,
   imports: [ProductCardComponent, PaginationComponent, OrderByFilterComponent, CategoryFilterComponent, NumProductsFilterComponent],
+  providers: [TitleCasePipe],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
@@ -24,13 +27,29 @@ export class CatalogComponent {
   filter: string = Category.all;
   orderBy: SortOrder = SortOrder.popularity;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private titleCasePipe: TitleCasePipe
+  ) {
   }
 
   ngOnInit() {
+    console.log('OnInit(): catalog');
+
     this.productService.getProducts().subscribe( (products) => {
       this.products = products;
     });
+
+    let filter = this.route.snapshot.paramMap.get('filter');
+    if(filter) {
+        let category = filter.replaceAll('-', ' ');
+        category = this.titleCasePipe.transform(category);
+        console.log('category: ' + category);
+        this.filter = category;
+      }     
+      
+      console.log('Catalog filter:' + this.filter);
   }
 
   getFilteredProducts() : IProduct[] {

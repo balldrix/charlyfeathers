@@ -1,1 +1,8 @@
-<p>{{product.name}}</p>
+<div class="wrapper">
+	<div class="breadcrumbs">
+		<a [routerLink]="'/home'">Home</a> /
+		<a [routerLink]="'/catalog'">Catalog</a> /
+		<a [routerLink]="['/catalog/' + this.categoryRoute]"> {{ product.category | titlecase }} </a> /
+		<p>{{ product.name }}</p>
+	</div>
+</div>

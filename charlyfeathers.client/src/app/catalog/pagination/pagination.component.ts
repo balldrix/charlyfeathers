@@ -67,10 +67,7 @@ export class PaginationComponent {
         end = currentPage + maxPagesAfterCurrentPage - 1;
     }
     
-    console.log("start:" + start);
-    console.log("end:" + end);
     this.pages = this.range(start, end);
-    console.log(this.pages);
   }
 
   range(start: number, end: number) : number[] { 

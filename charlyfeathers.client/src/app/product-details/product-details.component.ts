@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { IProduct } from '../models/product.model';
 import { ProductService } from '../product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'cfs-product-details',
   standalone: true,
-  imports: [],
+  imports: [TitleCasePipe, RouterLink],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -18,13 +19,13 @@ export class ProductDetailsComponent {
   constructor(
     private productService: ProductService,
     private titleService: Title,
-    private activateRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.titleService.setTitle(this.product?.name + " | Charly Feathers. Inspired by nature and the simple things in life.");
     
-    let id = this.activateRoute.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.paramMap.get('id');
     
     if (id) {
       this.productId = id;
@@ -36,5 +37,9 @@ export class ProductDetailsComponent {
         this.product = product;
       }      
     })
+  }
+
+  get categoryRoute() {
+    return this.product.category.replaceAll(' ', '-');
   }
 }
