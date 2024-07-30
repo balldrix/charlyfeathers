@@ -296,4 +296,9 @@ export class ProductService {
 
     return of(products);
   }
+
+  getImageUrl(product: IProduct) {
+    if(!product) return ' ';
+      return '/assets/images/catalog/' + product.imageName;
+  }
 }

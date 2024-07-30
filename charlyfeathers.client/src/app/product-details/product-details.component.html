@@ -1,8 +1,26 @@
 <div class="wrapper">
+	
 	<div class="breadcrumbs">
 		<a [routerLink]="'/home'">Home</a> /
 		<a [routerLink]="'/catalog'">Catalog</a> /
 		<a [routerLink]="['/catalog/' + this.categoryRoute]"> {{ product.category | titlecase }} </a> /
 		<p>{{ product.name }}</p>
+	</div>
+
+	<div class="product-images">
+		<img class="product-image" [src]="getImgUrl(product)" alt="photo of {{ product.name }}"/>
+	</div>
+
+	<div class="product-info">
+		<h1>{{ product.name }}</h1>
+		<h2>{{ product.price | currency : "GBP"}}</h2>
+		<h3>{{ product.description }}</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae assumenda veniam ostrum soluta vero officia totam nulla? Eligendi rem sunt omnis, dolorum molestiae maiores expedita ipsa nostrum rerum exercitationem doloribus?</p>
+
+		<div class="buttons">
+			<button (click)="addToBasket(product)">ADD TO BASKET</button>
+			<button (click)="addToWishlist(product)">Wish</button>
+		</div>
+
 	</div>
 </div>

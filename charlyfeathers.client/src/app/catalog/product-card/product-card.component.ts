@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { IProduct } from '../../models/product.model';
 import { RouterModule } from '@angular/router';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'cfs-product-card',
@@ -12,9 +13,11 @@ import { RouterModule } from '@angular/router';
 })
 export class ProductCardComponent {
   @Input() product!: IProduct;
+  
+  constructor(private productService: ProductService){    
+  }
 
   getImageUrl(product: IProduct) {
-    if(!product) return ' ';
-      return '/assets/images/catalog/' + product.imageName;
+    return this.productService.getImageUrl(product);
   }
 }
