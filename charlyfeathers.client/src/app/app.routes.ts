@@ -6,6 +6,6 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 export const routes: Routes = [
 	{ path: 'home', component: HomeComponent, title: "Home | Charly Feathers. Inspired by nature and the simple things in life." },
 	{ path: 'catalog', component: CatalogComponent, title: "Catalog | Charly Feathers. Inspired by nature and the simple things in life." },
-	{ path: 'product/:id', component: ProductDetailsComponent, title: "Charly Feathers. Inspired by nature and the simple things in life." },
+	{ path: 'product/:id', component: ProductDetailsComponent },
 	{ path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
