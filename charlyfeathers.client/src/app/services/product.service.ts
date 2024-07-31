@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IProduct } from './models/product.model';
+import { IProduct } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ export class ProductService {
   constructor() { }
 
   getProducts(): Observable<IProduct[]> {
+    // TODO: replace with http get to api
     let products : IProduct[] = 
     [
       {

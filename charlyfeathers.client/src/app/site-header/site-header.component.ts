@@ -16,5 +16,5 @@ export class SiteHeaderComponent {
   faUser = faUser;
   faMagnifyingGlass = faMagnifyingGlass;
   faHeart = faHeart;
-  faShoppingCart = faShoppingBasket;
+  faShoppingBasket = faShoppingBasket;
 }

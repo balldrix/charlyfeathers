@@ -1,0 +1,11 @@
+.best-sellers-section {
+	display: grid;
+	grid-template-columns: 200px 200px;
+	grid-template-rows: auto;
+  
+	box-sizing: border-box;
+	width: 400px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+  }

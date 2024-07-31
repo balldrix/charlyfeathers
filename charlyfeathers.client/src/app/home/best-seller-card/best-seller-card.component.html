@@ -1,7 +1,12 @@
 <div class="best-seller-card">
-	<img src="/assets/images/catalog/flossdrops-painted-christmas 3.png" alt="photo of christmas floss drop set"/>
-	<div class="best-seller-card-info">
-		<p>Christmas Set</p>
-		<p>£24.00</p>
-	</div>
+		<div class="photo">
+			<img src="{{ getImgUrl(product) }}" alt="photo of christmas floss drop set"/>
+		</div>
+		<div class="best-seller-card-info">
+			<p>{{ product.name }}</p>
+			<p>{{ product.price | currency }}</p>
+		</div>
+		<div class="hidden">
+			<a class="btn" (click)="addToBasket(product)">Add To Basket</a>
+		</div>
 </div>

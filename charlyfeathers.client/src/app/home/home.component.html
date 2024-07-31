@@ -6,7 +6,7 @@
 				<p class="eyebrow">Handstitcher & Gelli Printer</p>
 				<h1>Handmade floss drops, ring bling and needle minders</h1>
 				<p>Inspired by nature and the simple things in life.</p>
-				<a href="#" class="btn dark">Shop</a>
+				<a [routerLink]="'/catalog'" class="btn dark">Shop</a>
 			</div>
 		</div>
 	</section>
@@ -31,9 +31,11 @@
 
 	</section>
 
+	<h2>Best Sellers</h2>
 	<section class="best-sellers-section">
-		<h2>Best Sellers</h2>
-		<cfs-best-seller-card/>
+		@for(product of bestSellers; track product.id) {
+			<cfs-best-seller-card [product]="product"/>
+		}
 	</section>
 
 	<cfs-instagram-feed/>

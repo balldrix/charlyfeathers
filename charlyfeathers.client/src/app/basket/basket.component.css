@@ -1,0 +1,11 @@
+.emptyBasket { 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 400px;
+}
+
+.basket img {
+	width: 100px;
+	height: 100px;
+}
