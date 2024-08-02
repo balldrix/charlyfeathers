@@ -35,7 +35,7 @@ export class BasketService {
     // TODO: add http post to api
   }
 
-  removeFromBasket(product: IProduct) {
+  removeSingleItem(product: IProduct) {
     let basket = this.basket.getValue();
     let index = basket.findIndex(i => i.product.id == product.id);
 
@@ -50,7 +50,12 @@ export class BasketService {
     // TODO: add http post to api
   }
 
-  removeAll() {
+  removeAll(product: IProduct) {
+    let basket = this.basket.getValue().filter((p) => p.product != product);
+    this.basket.next(basket);
+  }
+
+  emptyBasket() {
     this.basket.next([]);
   }
 

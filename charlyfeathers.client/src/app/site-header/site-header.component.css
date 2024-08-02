@@ -6,6 +6,7 @@
     align-content: center;
     background-color: var(--clr-accent-400);
     height: 39px;
+    width: 100%;
 }
 
 nav 

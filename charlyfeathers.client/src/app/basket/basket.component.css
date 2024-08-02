@@ -9,3 +9,12 @@
 	width: 100px;
 	height: 100px;
 }
+
+.qty {
+	cursor: pointer;
+	padding: 5px;
+}
+
+.trash-bin {
+	cursor: pointer;
+}

@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div id="container">
 	@if (basket.length == 0) {
 		<div class="emptyBasket">
 			<h2>Your basket is empty!</h2>
@@ -6,28 +6,44 @@
 		</div>
 	} @else {
 		
-		<table class="basket">
-			<thead>
-				<tr>
-					<th>Product</th>
-					<th>Price</th>
-					<th>Quantity</th>
-					<th>Total</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				@for(item of basket; track item.product.id) {
-					<tr> 
-						<img [src]="getImageUrl(item.product)">
-						{{ item.product.name }}
+		<div class="table">
+			<table class="basket">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>Total</th>
+						<th></th>
 					</tr>
-					<tr> {{ item.product.price }} </tr>
-					<tr> {{ item.quantity }}</tr>
-					<tr> {{ item.quantity * item.product.price }} </tr>
-				}
-			</tbody>
-		</table>
-
+				</thead>
+				<tbody>
+					@for(item of basket; track item.product.id) {
+						<tr> 
+							<img [src]="getImageUrl(item.product)">
+							{{ item.product.name }}
+						</tr>
+						<tr> {{ item.product.price }} </tr>
+						<tr> 
+							<span (click)="decreaseQuantity(item)" class="qty minus">-</span>
+							<span>{{ item.quantity }}</span>
+							<span (click)="increaseQuantity(item)" class="qty plus">+</span>
+						</tr>
+						<tr> {{ item.quantity * item.product.price }} </tr>
+						<tr> <a class="trash-bin" (click)="removeAll(item)"><fa-icon [icon]="faTrash"></fa-icon></a></tr>
+					}
+				</tbody>
+			</table>
+		</div>
+		<div class="total">
+			<h2>Basket Totals</h2>
+			<div class="">
+				<p>Subtotal</p>
+				<p>{{ grandTotal }}</p>
+			</div>
+			<a class="cta" [routerLink]="'/checkout'">Proceed To Checkout</a>
+		</div>
+		
+		<a class="cta" [routerLink]="'/catalog'">Continue Shopping</a>
 	}
 </div>
