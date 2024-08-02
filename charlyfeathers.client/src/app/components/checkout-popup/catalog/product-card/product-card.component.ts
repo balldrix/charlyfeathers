@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { IProduct } from '../../models/product.model';
+import { IProduct } from '../../../../models/product.model';
 import { RouterModule } from '@angular/router';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../../services/product.service';
 
 @Component({
   selector: 'cfs-product-card',

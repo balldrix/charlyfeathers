@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { IProduct } from '../models/product.model';
-import { ProductService } from '../services/product.service';
+import { IProduct } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TitleCasePipe, CurrencyPipe } from '@angular/common';
-import { BasketService } from '../services/basket.service';
+import { BasketService } from '../../services/basket.service';
 
 @Component({
   selector: 'cfs-product-details',

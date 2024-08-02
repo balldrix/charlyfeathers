@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BasketService } from '../services/basket.service';
-import { IProduct } from '../models/product.model';
+import { BasketService } from '../../services/basket.service';
+import { IProduct } from '../../models/product.model';
 import { RouterLink } from '@angular/router';
-import { ProductService } from '../services/product.service';
-import { IBasketItem } from '../models/basket-item.model';
+import { ProductService } from '../../services/product.service';
+import { IBasketItem } from '../../models/basket-item.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 

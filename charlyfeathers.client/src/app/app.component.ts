@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { SiteHeaderComponent } from "./site-header/site-header.component";
-import { SiteFooterComponent } from "./site-footer/site-footer.component";
+import { SiteHeaderComponent } from "./components/site-header/site-header.component";
+import { SiteFooterComponent } from "./components/site-footer/site-footer.component";
 
 
 @Component({

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { AboutMeComponent } from './about-me/about-me.component';
-import { BasketComponent } from './basket/basket.component';
+import { HomeComponent } from './components/home/home.component';
+import { CatalogComponent } from './components/checkout-popup/catalog/catalog.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
+import { BasketComponent } from './components/basket/basket.component';
 
 const title = 'Charly Feathers. Inspired by nature and the simple things in life.';
 
