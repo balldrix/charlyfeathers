@@ -35,21 +35,6 @@ export class BasketService {
     // TODO: add http post to api
   }
 
-  removeSingleItem(product: IProduct) {
-    let basket = this.basket.getValue();
-    let index = basket.findIndex(i => i.product.id == product.id);
-
-    if(basket[index].quantity == 1) {
-        basket = this.basket.getValue().filter((p) => p.product != product);
-      } else {
-        basket[index].quantity--;
-      }
-      
-      this.basket.next(basket);
-
-    // TODO: add http post to api
-  }
-
   removeAll(product: IProduct) {
     let basket = this.basket.getValue().filter((p) => p.product != product);
     this.basket.next(basket);
@@ -59,11 +44,19 @@ export class BasketService {
     this.basket.next([]);
   }
 
+  updateBasket(basket: IBasketItem[]) {
+    this.basket.next(basket);
+  }
+
+  getItem(id: number) {
+    return this.basket.getValue().find((item) => item.product.id == id )
+  }
+
   get totalPrice() {
     let totalPrice = 0;
     let products = this.basket.getValue();
     products.map((i:IBasketItem) => {
-      totalPrice += i.product.price;
+      totalPrice += i.product.price * i.quantity;
     })
 
     return totalPrice;

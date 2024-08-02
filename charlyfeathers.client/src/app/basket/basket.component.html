@@ -29,7 +29,7 @@
 							<span>{{ item.quantity }}</span>
 							<span (click)="increaseQuantity(item)" class="qty plus">+</span>
 						</tr>
-						<tr> {{ item.quantity * item.product.price }} </tr>
+						<tr> {{ getItemTotalPrice(item) }} </tr>
 						<tr> <a class="trash-bin" (click)="removeAll(item)"><fa-icon [icon]="faTrash"></fa-icon></a></tr>
 					}
 				</tbody>

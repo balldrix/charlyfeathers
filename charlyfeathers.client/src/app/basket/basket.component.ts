@@ -15,7 +15,7 @@ import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
   styleUrl: './basket.component.css'
 })
 export class BasketComponent {
-  public basket!: IBasketItem[];
+  basket!: IBasketItem[];
   faTrash = faTrashCan;
 
   constructor(
@@ -24,23 +24,38 @@ export class BasketComponent {
   ) {}
 
   ngOnInit() {
-      this.basketService.getBasket().subscribe((basket) => {
-          this.basket = basket;
-      });
-
-      console.log(this.basket);
-    }
+    this.basketService.getBasket().subscribe((basket) => {
+      this.basket = basket;
+    });
+  }
 
   getImageUrl(product: IProduct) {
     return this.productService.getImageUrl(product);
   }
 
-  increaseQuantity(item: IBasketItem) {
-    this.basketService.addToBasket(item.product);
+  increaseQuantity(item: IBasketItem) {  
+    item.quantity++;
   }
 
-  decreaseQuantity(item: IBasketItem) {
-    this.basketService.removeSingleItem(item.product);
+  decreaseQuantity(item: IBasketItem) {  
+    if(item.quantity > 1)  
+      item.quantity--;
+  }
+
+  updateBasket() {
+    this.basketService.updateBasket(this.basket);
+  }
+
+  getItemTotalPrice(item: IBasketItem) {
+    let i = this.basketService.getItem(item.product.id);
+
+    if(i) {
+      console.log(i);
+      console.log(item);
+      return i.quantity * i.product.price;
+    }
+
+    return 0;
   }
 
   get grandTotal() {
