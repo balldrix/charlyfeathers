@@ -12,4 +12,5 @@ import { SiteFooterComponent } from "./components/site-footer/site-footer.compon
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  title!: string;
 }
