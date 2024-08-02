@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from '../../../models/product.model';
-import { BasketService } from '../../../services/basket.service';
-import { ProductService } from '../../../services/product.service';
+import { IProduct } from '../../models/product.model';
+import { BasketService } from '../../services/basket.service';
+import { ProductService } from '../../services/product.service';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({

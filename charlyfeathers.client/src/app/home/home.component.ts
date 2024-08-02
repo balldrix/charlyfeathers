@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { BestSellerCardComponent } from './best-seller-card/best-seller-card.component';
 import { InstagramFeedComponent } from "./instagram-feed/instagram-feed.component";
-import { ProductService } from '../../services/product.service';
-import { IProduct } from '../../models/product.model';
+import { ProductService } from '../services/product.service';
+import { IProduct } from '../models/product.model';
 import { RouterLink } from '@angular/router';
 
 @Component({
