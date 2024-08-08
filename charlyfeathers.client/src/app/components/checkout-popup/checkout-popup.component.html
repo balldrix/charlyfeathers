@@ -1,1 +1,29 @@
-<p>checkout-popup works!</p>
+<div [ngClass]="{ 'checkout-popup-overlay': true, 'hidden': !isCheckoutPopupActive }">
+	<div class="checkout-popup-wrapper">
+		<div class="checkout-popup-container">
+			<div class="checkout-popup-tabs">
+				<a [ngClass]=" { 'active': !isRegisterTabActive } ">Already Registered?</a>
+				<a [ngClass]=" { 'active': isRegisterTabActive } ">New Customer?</a>
+			</div>
+		</div>
+		<div [ngClass]=" { 'checkout-popup-login': true, 'hidden': isRegisterTabActive }">
+			
+			<form id="checkout-form-login" action="/" method="post">
+				<h1>Login Here</h1>
+				<input class="checkout-login-email" type="email" name="email" placeholder="Email Address">
+				<input class="checkout-login-password" type="password" name="password" placeholder="Password">
+				<button class="checkout-button" type="submit">Sign In</button>
+				<div>
+					<a class="checkout-lost">Lost your password?</a>
+				</div>
+			</form>
+		</div>
+		<div [ngClass]=" { 'checkout-popup-register': true, 'hidden': !isRegisterTabActive } ">
+			<h1>Register</h1>
+			<a class="checkout-button">Register Now</a>
+		</div>
+		<div class="checkout-popup-guest-box">
+			<a class="checkout-popup-guest">Continue as guest</a>
+		</div>
+	</div>
+</div>

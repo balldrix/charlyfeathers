@@ -1,0 +1,7 @@
+.active {
+	color: var(--clr-accent-400);
+}
+
+.hidden { 
+	display: none;
+}
