@@ -9,26 +9,26 @@
         <nav>
         <ul role="list" class="nav-list">
             <li>
-                <a routerLink="/home" routerLinkActive="active">Home</a>
+                <a [routerLink]="[ROUTER_TOKENS.HOME]" routerLinkActive="active">Home</a>
             </li>
 
             <li>
-                <a routerLink="/catalog" routerLinkActive="active">Catalog</a>
+                <a [routerLink]="[ROUTER_TOKENS.CATALOG]" routerLinkActive="active">Catalog</a>
             </li>
 
             <li>
-                <a routerLink="/about" routerLinkActive="active">About</a>
+                <a [routerLink]="[ROUTER_TOKENS.ABOUT]" routerLinkActive="active">About</a>
             </li>
 
             <li>
-                <a routerLink="/contact" routerLinkActive="active">Contact</a>
+                <a [routerLink]="" routerLinkActive="active">Contact</a>
             </li>
         </ul>
     </nav>
 
     <ul role="list" class="icon-list">
         <li>
-            <a routerLink="/account"><fa-icon [icon]="faUser" ></fa-icon></a>
+            <a [routerLink]="[ROUTER_TOKENS.ACCOUNT]"><fa-icon [icon]="faUser" ></fa-icon></a>
         </li>
         <li>
             <a href=""><fa-icon [icon]="faMagnifyingGlass"></fa-icon></a>

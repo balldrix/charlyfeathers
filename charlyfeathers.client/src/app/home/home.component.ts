@@ -4,6 +4,7 @@ import { InstagramFeedComponent } from "./instagram-feed/instagram-feed.componen
 import { ProductService } from '../services/product.service';
 import { IProduct } from '../models/product.model';
 import { RouterLink } from '@angular/router';
+import { ROUTER_TOKENS } from '../app.routes';
 
 @Component({
   selector: 'cfs-home',
@@ -13,6 +14,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  readonly ROUTER_TOKENS = ROUTER_TOKENS;
   readonly maxBestSellers: number = 8;
   bestSellers!: IProduct[];
 

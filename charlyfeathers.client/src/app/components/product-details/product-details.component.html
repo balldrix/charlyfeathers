@@ -1,9 +1,9 @@
 <div id="container">
 	
 	<div class="breadcrumbs">
-		<a [routerLink]="'/home'">Home</a> /
-		<a [routerLink]="'/catalog'">Catalog</a> /
-		<a [routerLink]="['/catalog/' + this.categoryRoute]"> {{ product.category | titlecase }} </a> /
+		<a [routerLink]="'../../' + [ROUTER_TOKENS.HOME]">Home</a> /
+		<a [routerLink]="'../../' + [ROUTER_TOKENS.CATALOG]">Catalog</a> /
+		<a [routerLink]="'../../' + [ ROUTER_TOKENS.CATALOG + '/' + this.categoryRoute]"> {{ product.category | titlecase }} </a> /
 		<p>{{ product.name }}</p>
 	</div>
 

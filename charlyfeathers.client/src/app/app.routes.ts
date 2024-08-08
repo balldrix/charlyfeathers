@@ -8,13 +8,22 @@ import { AccountComponent } from './account/account.component';
 
 const title = 'Charly Feathers. Inspired by nature and the simple things in life.';
 
+export enum ROUTER_TOKENS {
+	HOME = 'home',
+	CATALOG = 'catalog',
+	PRODUCT = 'product',
+	ABOUT = 'about',
+	ACCOUNT = 'account',
+	BASKET = 'basket'
+}
+
 export const routes: Routes = [
-	{ path: 'home', component: HomeComponent, title: "Home | " + title },
-	{ path: 'catalog', component: CatalogComponent, title: "Catalog | " + title },
-	{ path: 'catalog/:filter', component: CatalogComponent, title: "Catalog | " + title },
-	{ path: 'product/:id', component: ProductDetailsComponent },
-	{ path: 'about', component: AboutMeComponent, title: "About Me | " + title },
-	{ path: 'account', component: AccountComponent, title: "Account | " + title },
-	{ path: 'basket', component: BasketComponent, title: "Basket | " + title },
-	{ path: '', redirectTo: '/home', pathMatch: 'full' }
+	{ path: ROUTER_TOKENS.HOME, component: HomeComponent, title: "Home | " + title },
+	{ path: ROUTER_TOKENS.CATALOG, component: CatalogComponent, title: "Catalog | " + title },
+	{ path: ROUTER_TOKENS.CATALOG + '/:filter', component: CatalogComponent, title: "Catalog | " + title },
+	{ path: ROUTER_TOKENS.PRODUCT + '/:id', component: ProductDetailsComponent },
+	{ path: ROUTER_TOKENS.ABOUT, component: AboutMeComponent, title: "About Me | " + title },
+	{ path: ROUTER_TOKENS.ACCOUNT, component: AccountComponent, title: "Account | " + title },
+	{ path: ROUTER_TOKENS.BASKET, component: BasketComponent, title: "Basket | " + title },
+	{ path: '', redirectTo: ROUTER_TOKENS.HOME, pathMatch: 'full' }
 ];
