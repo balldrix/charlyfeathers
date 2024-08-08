@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IProduct } from '../../../models/product.model';
+import { IProduct } from '../../models/product.model';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PaginationComponent } from "./pagination/pagination.component";
 import { OrderByFilterComponent } from "./order-by-filter/order-by-filter.component";
@@ -7,7 +7,7 @@ import { SortOrder } from './order-by-filter/order-by-filter.component';
 import { Category, CategoryFilterComponent } from "./category-filter/category-filter.component";
 import { NumProductsFilterComponent } from "./num-products-filter/num-products-filter.component";
 import { BehaviorSubject } from 'rxjs';
-import { ProductService } from '../../../services/product.service';
+import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 
