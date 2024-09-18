@@ -4,7 +4,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { BasketComponent } from './components/basket/basket.component';
-import { AccountComponent } from './account/account.component';
+import { AccountComponent } from './components/account/account.component';
 
 const title = 'Charly Feathers. Inspired by nature and the simple things in life.';
 
